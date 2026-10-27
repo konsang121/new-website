@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S60 3D 展示 | 新维智能 NEWDIM</title>
+<meta name="description" content="上工 S60 无鸟巢电脑平缝机 3D 互动模型：旋转、透视内部、拆解查看各部件与零件图号。">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  html, body { height: 100%; }
+  body { background: #0f1d3b; color: #fff; display: flex; flex-direction: column; }
+  .viewer-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; background: #0f1d3b; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .viewer-bar a.brand b { color: #fff; }
+  .viewer-bar .right { display: flex; gap: 8px; align-items: center; }
+  .viewer-bar .btn { padding: 8px 16px; font-size: 14px; }
+  .viewer-main { flex: 1; min-height: 0; padding: 14px 16px 16px; }
+  .viewer-main .s60 { height: 100%; min-height: 0; }
+  .viewer-main .s60-stage { min-height: 0; height: 100%; }
+  .ref-overlay { position: absolute; inset: 0; background: url(assets/s60-ref.png) center / contain no-repeat; opacity: .45; pointer-events: none; display: none; }
+  .ref-on .ref-overlay { display: block; }
+  @media (max-width: 1024px) { .viewer-main .s60-stage { height: 62vh; } .viewer-main .s60 { height: auto; } }
+</style>
+
+</head>
+<body>
+  <header class="viewer-bar">
+    <a href="index.html#/" class="brand"><img src="assets/logo-mark.png" alt="" width="36" height="36"><span class="brand-text"><b>新维智能</b><small>NEWDIM</small></span></a>
+    <div class="right">
+      <a class="btn btn-line" id="back" href="index.html#/">← 返回官网</a>
+      <a class="btn btn-red" id="buy" href="index.html#/g/lockstitch/shanggong/shanggong-s60pm-w-pbn">查看配置与询价</a>
+    </div>
+  </header>
+  <main class="viewer-main"><div class="s60" id="s60"></div></main>
+<script src="s60-3d.bundle.js"></script>
+<script>
+  const mount = window.NEWDIM_S60.mount;
+  let lang = "zh";
+  try { lang = localStorage.getItem("newdim-lang") || "zh"; } catch (e) {}
+  if (lang === "en") {
+    document.documentElement.lang = "en";
+    document.getElementById("back").textContent = "← Back to site";
+    document.getElementById("buy").textContent = "Configure & Get a Quote";
+  }
+  const q = new URLSearchParams(location.search);
+  const debug = q.has("debug");
+  const api = mount(document.getElementById("s60"), lang, { debug, embedded: q.has("embedded") });
+  if (debug) {
+    // 对照模式：?debug 打开；按 R 叠加/取消产品实拍图
+    window.s60 = api;
+    const st = document.querySelector(".s60-stage");
+    st.insertAdjacentHTML("beforeend", '<div class="ref-overlay"></div>');
+    if (q.has("ref")) st.classList.add("ref-on");
+    addEventListener("keydown", e => { if (e.key === "r") st.classList.toggle("ref-on"); });
+  }
+</script>
+</body>
+</html>

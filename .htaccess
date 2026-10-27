@@ -1,0 +1,9 @@
+# Apache 主机：补充 MIME 类型与默认编码
+AddType model/gltf-binary .glb
+AddType image/webp .webp
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .js .css .html
+DirectoryIndex index.html
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript model/gltf-binary
+</IfModule>

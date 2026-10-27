@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新维智能 NEWDIM | 服装智能制造设备</title>
+<meta name="description" content="新维智能科技有限公司（NEWDIM INTELLIGENT TECHNOLOGY CO., LTD），位于柬埔寨金边，提供缝前、缝中、缝后及智能工厂全套服装设备与服务。">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <span data-i18n="topbar"></span>
+    <button class="lang" id="lang" type="button">EN</button>
+  </div>
+</div>
+<header class="header">
+  <div class="wrap header-in">
+    <a href="#/" class="brand">
+      <img src="assets/logo-mark.png" alt="" width="44" height="44">
+      <span class="brand-text"><b>新维智能</b><small>NEWDIM</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav">
+      <a href="#/" data-i18n="nav_home"></a>
+      <a href="#/about" data-i18n="nav_about"></a>
+      <a href="#/products" data-i18n="nav_products"></a>
+      <a href="#/brands" data-i18n="nav_brands"></a>
+      <a href="#/contact" data-i18n="nav_contact"></a>
+      <a href="#/contact" class="btn btn-red nav-cta" data-i18n="quote"></a>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <img src="assets/logo.png" alt="NEWDIM" class="footer-logo">
+    </div>
+    <div>
+      <h4 data-i18n="company"></h4>
+      <p class="muted">NEWDIM INTELLIGENT TECHNOLOGY CO., LTD</p>
+      <p id="footAddr"></p>
+      <p>TIN: K007-902504918</p>
+    </div>
+    <div>
+      <h4 data-i18n="nav_products"></h4>
+      <ul class="foot-links" id="footCats"></ul>
+    </div>
+    <div>
+      <h4 data-i18n="nav_contact"></h4>
+      <ul class="foot-links" id="footContact"></ul>
+    </div>
+  </div>
+  <div class="wrap copyright">© <span id="year"></span> NEWDIM INTELLIGENT TECHNOLOGY CO., LTD</div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
